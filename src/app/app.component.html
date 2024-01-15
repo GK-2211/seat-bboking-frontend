@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Train Seat Reservation</h1>
+  <div class="seats-container">
+    <div class="row" *ngFor="let row of seatMatrix; let i = index">
+      <div
+        class="seat"
+        *ngFor="let seat of row; let j = index"
+        [ngClass]="{ available: !seat.booked, booked: seat.booked }"
+        
+      >
+        {{ i * 7 + j + 1 }}
+      </div>
+    </div>
+  </div>
+  <div class="reserve-form">
+    <label for="numSeats">Number of Seats:</label>
+    <input type="number" id="numSeats" [(ngModel)]="numSeatsToReserve" />
+    <button (click)="reserveSeats()">Reserve Seats</button>
+    <button (click)="resetSeats()">Reset Seats</button>
+  </div>
+</div>
